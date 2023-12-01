@@ -12,3 +12,6 @@ def analysis(request):
 def signUp(request):
     return render(request, "signUp.html")
 
+def home(request):
+    return render(request, "home.html")
+
