@@ -10,6 +10,11 @@
 </head>
 
 <body>
-    <!-- 中身 -->
+    <h2>SignUp</h2>
+    <form method="post" action="{% url 'signUp' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">SignUp</button>
+    </form>
 </body>
 </html>
