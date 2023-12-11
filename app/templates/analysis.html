@@ -10,6 +10,40 @@
 </head>
 
 <body>
-    <!-- 中身 -->
+    <nav>
+        <ul>
+            <li class="border"><a href="{% url 'home' %}">home</a></li>
+            <li class="border"><a href="{% url 'private' %}">user</a></li>
+            <li class="border"><a href="{% url 'analysis' %}">analysis</a></li>
+        </ul>
+    </nav>
+
+    <div id="main">
+        <div id="main-box">
+            <form>
+                <div class="input-box">
+                    <label for="input-url" id="label">YouTube URL</label>
+                    <input type="text" id="input-url" class="input-text" name="input-url" placeholder="URLを入力" required>
+                    <div class="background-input-box"></div>
+                </div>
+
+                <div class="radio-box">
+                    <h2>ボーカルあり・なし</h2>
+                    <label for="vocal"><input type="raio" name="vocal" value="vocal">ボーカルあり</label>
+                    <label for="no-vocal"><input type="raio" name="no-vocal" value="no-vocal">ボーカルなし</label>
+                </div>
+
+                <div class="radio-box">
+                    <h2>楽器別(バス、ドラム、その他)に分けるか</h2>
+                    <label for="separate"><input type="raio" name="separate" value="separate">分けない</label>
+                    <label for="no-separate"><input type="raio" name="no-separate" value="no-separate">分ける</label>
+                </div>
+
+                <div id="execution-box">
+                    <button type="submit">解析する</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
