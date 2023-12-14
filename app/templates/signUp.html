@@ -1,20 +1,12 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <title>music analyzer</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/signUp.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
-</head>
-
-<body>
-    <h2>SignUp</h2>
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/signUp.css' %}">
+<h2>SignUp</h2>
     <form method="post" action="{% url 'signUp' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">SignUp</button>
     </form>
-</body>
-</html>
+{% endblock %}

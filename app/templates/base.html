@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>music analyzer</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="border"><a href="{% url 'home' %}">home</a></li>
+            <li class="border"><a href="{% url 'private' %}">user</a></li>
+            <li class="border"><a href="{% url 'analysis' %}">analysis</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

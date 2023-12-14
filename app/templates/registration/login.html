@@ -1,16 +1,9 @@
+{% extend 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <title>music analyzer</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
-</head>
-
-<body>
-    <h1>Login</h1>
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+<h1>Login</h1>
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
@@ -21,5 +14,4 @@
     </form>
 
     <p><a href="{% url 'home' %}">home</a></p>
-  </body>
-</html>
+{% endblock %}

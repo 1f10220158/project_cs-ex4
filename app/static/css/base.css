@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+body {
+	height: 100%; /*高さを100%にして描画エリアをとる*/
+    margin: 0;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    background-color: white;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    padding: 0px 40px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    width: 40px;
+}

@@ -4,12 +4,23 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
 
-@login_required
+
+#@login_required
 def private(request):
     return render(request, "private.html")
 
-@login_required
+#@login_required
 def analysis(request):
+    if request.method == "GET":
+        return render(request, "analysis.html")
+    
+    elif request.method == "POST":
+        file = request.FILES
+        url = request.POST.get("url")
+        vocal = request.POST.get("vocal")
+        separate = request.POST.get("separate")
+        soundfile.write(file='test.wav', data=file ,samplerate=14400)
+
     return render(request, "analysis.html")
 
 def home(request):
