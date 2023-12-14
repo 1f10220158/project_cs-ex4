@@ -12,7 +12,7 @@ def analysis(request):
         return render(request, "analysis.html")
     
     elif request.method == "POST":
-        file = request.FILES.get("soundfile")
+        file = request.FILES
         url = request.POST.get("url")
         vocal = request.POST.get("vocal")
         separate = request.POST.get("separate")
