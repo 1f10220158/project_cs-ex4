@@ -1,42 +1,5 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <title>music analyzer</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
-</head>
-
-<body>
-
-    <header>
-      <h1>音声解析アプリ</h1>
-    </header>
-  
-    <nav>
-      <button onclick="showPage('login')">Login</button>
-      <button onclick="showPage('sharePrivate')">Share Private</button>
-      <button onclick="showPage('analysis')">Analysis</button>
-    </nav>
-  
-    <section>
-      <div id="titleList">
-        <h2>解析一覧</h2>
-        <ul id="titles">
-          <li onclick="showDetails('Title 1')">Title 1</li>
-          <li onclick="showDetails('Title 2')">Title 2</li>
-          <li onclick="showDetails('Title 3')">Title 3</li>
-        </ul>
-      </div>
-      <div id="details">
-        <h2>解析の詳細</h2>
-        <p id="detailsContent">解析詳細</p>
-      </div>
-    </section>
-  
-    <script src="{% static 'js/home.js' %}"></script>
-  
-  </body>
-</html>
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
