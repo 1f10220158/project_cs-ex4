@@ -1,4 +1,4 @@
-{% extend 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
@@ -12,6 +12,7 @@
       {{ form.as_p }}
       <input type="submit" value="Login" />
     </form>
+    <p>Don't have an account? <a href="{% url 'signUp' %}">Sign Up</a></p>
 
     <p><a href="{% url 'home' %}">home</a></p>
 {% endblock %}
