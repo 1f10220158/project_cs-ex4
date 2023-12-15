@@ -4,20 +4,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>music analyzer</title>
+    <title>Music Analyzer</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 </head>
 
 <body>
     <nav>
         <ul>
-            <li class="border"><a href="{% url 'home' %}">home</a></li>
-            <li class="border"><a href="{% url 'private' %}">user</a></li>
-            <li class="border" id="border-analysis"><a href="{% url 'analysis' %}">analysis</a></li>
+            <li id="home-link"><a href="{% url 'home' %}">Music Analyzer</a></li>
+            <li class="link" id="user-link"><a href="{% url 'private' %}">user page</a></li>
+            <li class="link" id="analysis-link"><a href="{% url 'analysis' %}">analysis</a></li>
         </ul>
     </nav>
 
-    {% block content %}
-    {% endblock %}
+    <div id="wrapper">
+        {% block content %}
+        {% endblock %}
+        <div id="end-block"></div>
+    </div>
+    <script>
+        const accessingPath = "{{ request.path }}";
+        const styleBorderBottom = "solid 4px rgb(255, 170, 0)"
+
+        if (accessingPath === "/analysis/") {
+            const AnalysisLinkElement = document.getElementById("analysis-link");
+            AnalysisLinkElement.style.borderBottom = styleBorderBottom;
+        } else if (accessingPath === "/private/") {
+            const userLinkElement = document.getElementById("user-link");
+            userLinkElement.style.borderBottom = styleBorderBottom;
+        }
+    </script>
 </body>
 </html>
