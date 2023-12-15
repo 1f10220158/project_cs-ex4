@@ -20,8 +20,8 @@
     <div id="wrapper">
         {% block content %}
         {% endblock %}
-        <div id="end-block"></div>
     </div>
+    <div id="end-block"></div>
     <script>
         const accessingPath = "{{ request.path }}";
         const styleBorderBottom = "solid 4px rgb(255, 170, 0)"
@@ -34,5 +34,7 @@
             userLinkElement.style.borderBottom = styleBorderBottom;
         }
     </script>
+    {% block script %}
+    {% endblock %}
 </body>
 </html>

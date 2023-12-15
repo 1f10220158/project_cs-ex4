@@ -3,12 +3,51 @@
 #main {
     background-color: white;
     width: 95%;
-    margin: 85px auto 50px auto;
+    margin: 0 auto;
     box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.173);
     border-radius: 5px;
-    height: 1000px;
 }
 
 #main-box {
-    padding: 30px;
+    padding: 50px;
+}
+
+p.mid-header {
+    font-size: 22px;
+    font-weight: 500;
+    color: rgb(48, 48, 48);
+    padding: 0 0 5px 20px;
+    border-bottom: solid 4px rgba(255, 170, 0, 0.372);
+    margin: 0;
+}
+
+.range-box {
+    margin: 25px;
+}
+
+.range-box label {
+    font-size: 19px;
+    font-weight: 400;
+    margin: 10px;
+}
+
+#input-url-box {
+    margin: 30px 0 30px 35px;
+}
+
+#url {
+    width: 90%;
+    height: 40px;
+    padding: 0 20px;
+    outline: none;
+    border: 1px solid rgb(82, 82, 82);
+    border-radius: 20px;
+}
+
+#soundfile {
+    margin: 30px 0 30px 35px;;
+}
+
+#execution-box {
+    text-align: center;
 }
