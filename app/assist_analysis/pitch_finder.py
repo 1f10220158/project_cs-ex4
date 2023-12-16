@@ -90,7 +90,8 @@ def sort_note(note):
         return note[::-1]
     return note[2] + note[0] + note[1]
 
-def find_pitch(user_file, output_file):
+def find_pitch(user_file):
+    output_file = user_file
     converted_audio_file = convert_audio_for_model(user_file, output_file)
     sample_rate, audio_samples = wavfile.read(converted_audio_file, 'rb')
     audio_samples = audio_samples / float(MAX_ABS_INT16)

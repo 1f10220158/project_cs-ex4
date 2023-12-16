@@ -7,7 +7,7 @@
         <form action="{% url 'analysis' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             
-                <p class="mid-header">YouTube URLかファイル (mp3, wav) を選択</p>
+                <h2 class="mid-header">YouTube URLかファイル (mp3, wav) を選択</h2>
                 <div class="range-box">
                 <label for="url-or-file">YouTube URL</label>
                 <input type="range" name="url-or-file" id="url-or-file" min="0" max="1" step="1">
@@ -16,11 +16,11 @@
 
             <div id="file-box">
                 <p class="mid-header">ファイルを選択 (上で選択したフィールドに代わります)</p>
-                <input type="file" name="soundfile" id="soundfile" required>
+                <input type="file" name="audio-file" id="audio-file" required>
             </div>
 
             <div id="url-box" hidden>
-                <p class="mid-header">YouTube URLを入力 (上で選択したフィールドに代わります)</p>
+                <h2 class="mid-header">YouTube URLを入力 (上で選択したフィールドに代わります)</h2>
                 <div id="input-url-box">
                 <input type="text" name="url" id="url" placeholder="URLを入力">
                 <div class="background-input-box"></div>
@@ -28,7 +28,7 @@
             </div>
 
            
-            <p class="mid-header">ボーカルあり・なしを選択</p>
+            <h2 class="mid-header">ボーカルあり・なしを選択</h2>
                 <div class="range-box">
                 <label for="vocal">ボーカルなし</label>
                 <input type="range" name="vocal" id="vocal" min="0" max="1" step="1">
@@ -36,11 +36,11 @@
             </div>
 
             
-                <p class="mid-header">楽器別 (バス、ドラム、その他) に分けるか選択</p>
+                <h2 class="mid-header">楽器別 (バス、ドラム、その他) に分けるか選択</h2>
                 <div class="range-box">
                 <label for="separate">分けない</label>
-                <input type="range" name="separate" id="separate" min="0" max="1" step="1">
-                <label for="separate">分ける</label>
+                <input type="range" name="inst-separate" id="inst-separate" min="0" max="1" step="1">
+                <label for="inst-separate">分ける</label>
                 </div>
 
             <div id="execution-box">
@@ -74,6 +74,6 @@
             soundfileElement.required = true;
         }
     })
-    console.log("{{ vocal_range }}")
+    console.log("{{ vocal_range }}");
 </script>
 {% endblock %}

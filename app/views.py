@@ -19,39 +19,37 @@ def analysis(request):
         return render(request, "analysis.html")
     
     elif request.method == "POST":
-        sound_file = request.FILES.get("soundfile")
+        audio_file = request.FILES.get("audio-file")
         url = request.POST.get("url")
         vocal = request.POST.get("vocal")
-        separate = request.POST.get("separate")
+        separate = request.POST.get("inst-separate")
 
         #ファイルを入力した場合
-        if sound_file:
+        if audio_file:
 
-            analysis = Analysis(
-                music_path = sound_file,
-            )
+            analysis = Analysis(audio_path = audio_file)
             analysis.save()
 
-            audio_name = sound_file.name
+            audio_name = audio_file.name
             audio_name_without_extension = re.sub('.\s+', '', audio_name)
             title = audio_name_without_extension
-            audio_path = "media/music/{}".format(audio_name)
+            audio_path = "media/audio/{}".format(audio_name)
         
         #youtube-urlを入力した場合
         else:
 
             #urlから音声をダウンロード
-            opts = {
-                'outtmpl': 'media/music/%(id)s.mp3',
+            download_options = {
+                'outtmpl': 'media/audio/%(id)s.mp3',
                 'format': 'bestaudio'
             }
 
-            with YoutubeDL(opts) as ydl:
+            with YoutubeDL(download_options) as ydl:
                 res = ydl.extract_info(url)
 
             title = res["title"]
             audio_name_without_extension = res["id"]
-            audio_path = "media/music/{}.mp3".format(res["id"])
+            audio_path = "media/audio/{}.mp3".format(res["id"])
         
         #音声ファイル読み込み
         y, sr = librosa.load(audio_path)
@@ -66,6 +64,7 @@ def analysis(request):
         if key_obj.altkey is not None:
             key = "{} also possible {}".format(key, key_obj.altkey)
 
+        separated_path = "media/htdemucs/{}/{}"
         vocal_options = [
                 audio_path,
                 "-n", "htdemucs",
@@ -82,11 +81,10 @@ def analysis(request):
 
             #音声分離
             #demucs.separate.main(vocal_options)
-            separated_path = "media/htdemucs/{}/{}"
 
             #ボーカルの音域推定
             vocal_audio_path = separated_path.format(audio_name_without_extension, "vocals.mp3")
-            vocal_range = find_pitch(vocal_audio_path, vocal_audio_path)
+            vocal_range = find_pitch(vocal_audio_path)
 
 
         #ボーカルがなく楽器別に分ける場合
@@ -94,34 +92,27 @@ def analysis(request):
 
             #音声分離
             #demucs.separate.main(vocal_options)
-            separated_path = "media/htdemucs/{}/{}"
+            pass
 
         if url:
             analysis = Analysis()
-            analysis.music_path = audio_path
+            analysis.audio_path = audio_path
             analysis.youtube_url = url
 
         if vocal == "1":
             analysis.vocal_path = vocal_audio_path
             analysis.vocal_range = vocal_range
 
-            if separate == "0":
-                analysis.no_vocal_path = separated_path.format(audio_name_without_extension, "no_vocals.mp3")
-            else:
-                analysis.bass_path = separated_path.format(audio_name_without_extension, "bass.mp3")
-                analysis.drum_path = separated_path.format(audio_name_without_extension, "drum.mp3")
-                analysis.other_path = separated_path.format(audio_name_without_extension, "other.mp3")
-
+        if separate == "0":
+            analysis.no_vocal_path = separated_path.format(audio_name_without_extension, "no_vocals.mp3")
         else:
-            if separate == "0":
-                analysis.no_vocal_path = separated_path.format(audio_name_without_extension, "no_vocals.mp3")
-            else:
-                analysis.bass_path = separated_path.format(audio_name_without_extension, "bass.mp3")
-                analysis.drum_path = separated_path.format(audio_name_without_extension, "drum.mp3")
-                analysis.other_path = separated_path.format(audio_name_without_extension, "other.mp3")
+            analysis.bass_path = separated_path.format(audio_name_without_extension, "bass.mp3")
+            analysis.drum_path = separated_path.format(audio_name_without_extension, "drum.mp3")
+            analysis.other_path = separated_path.format(audio_name_without_extension, "other.mp3")
 
-        analysis.music_key = key
-        analysis.music_title = title
+        analysis.audio_key = key
+        analysis.audio_title = title
+        analysis.bpm = tempo
         analysis.save()
 
         """
@@ -140,12 +131,9 @@ def analysis(request):
         music_key = models.CharField(max_length=20)
         music_title = models.CharField(max_length=255)
         vocal_range = models.CharField(max_length=10)
+        bpm = models.CharField(max_length=20)
         """
-        context = {"vocal_range": {
-            "vocal_path": analysis.vocal_path,
-            "bass_path": analysis.bass_path,
-            "vocal_range": vocal_range
-        }}
+        context = {"data": 1}
 
     return render(request, "analysis.html", context)
 
@@ -154,4 +142,3 @@ def signUp(request):
 
 def home(request):
     return render(request, "home.html")
-
