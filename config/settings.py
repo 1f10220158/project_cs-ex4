@@ -130,3 +130,6 @@ LOGOUT_REDIRECT_URL = 'home'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+os.environ['TF_CPP_MIN_LOG_LEVEL']='1'

@@ -22,7 +22,7 @@
             <div id="url-box" hidden>
                 <p class="mid-header">YouTube URLを入力 (上で選択したフィールドに代わります)</p>
                 <div id="input-url-box">
-                <input type="text" name="url" id="url" placeholder="URLを入力" required>
+                <input type="text" name="url" id="url" placeholder="URLを入力">
                 <div class="background-input-box"></div>
             </div>
             </div>
@@ -30,9 +30,9 @@
            
             <p class="mid-header">ボーカルあり・なしを選択</p>
                 <div class="range-box">
-                <label for="vocal">ボーカルあり</label>
-                <input type="range" name="vocal" id="vocal" min="0" max="1" step="1">
                 <label for="vocal">ボーカルなし</label>
+                <input type="range" name="vocal" id="vocal" min="0" max="1" step="1">
+                <label for="vocal">ボーカルあり</label>
             </div>
 
             
@@ -56,15 +56,24 @@
     const urlBoxElement = document.getElementById("url-box");
     const fileBoxElement = document.getElementById("file-box");
     const urlOrFileRangeElement = document.getElementById("url-or-file");
+    const urlElement = document.getElementById("url");
+    const soundfileElement = document.getElementById("soundfile");
 
     urlOrFileRangeElement.addEventListener("input", (e) => {
         if (e.target.value === "0") {
             urlBoxElement.hidden = false;
             fileBoxElement.hidden = true;
+
+            soundfileElement.required = false;
+            urlElement.required = true;
         } else {
             urlBoxElement.hidden = true;
             fileBoxElement.hidden = false;
+
+            urlElement.required = false;
+            soundfileElement.required = true;
         }
     })
+    console.log("{{ vocal_range }}")
 </script>
 {% endblock %}
