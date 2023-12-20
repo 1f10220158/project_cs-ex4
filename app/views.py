@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-import soundfile
+from .models import Analysis
 
 #@login_required
 def private(request):
@@ -24,5 +24,7 @@ def signUp(request):
     return render(request, "signUp.html")
 
 def home(request):
-    return render(request, "home.html")
+    analysis_data = Analysis.objects.all()
 
+    context = {'analysis_data': analysis_data}
+    return render(request, "home.html", context)

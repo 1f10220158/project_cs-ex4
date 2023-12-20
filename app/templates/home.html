@@ -2,4 +2,10 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+
+{% for analysis in analysis_data %}
+    <p>User: {{ analysis.user_name }}</p>
+    <p>Music Title: {{ analysis.music_title }}</p>
+{% endfor %}
+
 {% endblock %}
