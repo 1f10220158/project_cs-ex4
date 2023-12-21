@@ -57,21 +57,21 @@
     const fileBoxElement = document.getElementById("file-box");
     const urlOrFileRangeElement = document.getElementById("url-or-file");
     const urlElement = document.getElementById("url");
-    const soundfileElement = document.getElementById("soundfile");
+    const audiofileElement = document.getElementById("audio-file");
 
     urlOrFileRangeElement.addEventListener("input", (e) => {
         if (e.target.value === "0") {
             urlBoxElement.hidden = false;
             fileBoxElement.hidden = true;
 
-            soundfileElement.required = false;
+            audiofileElement.required = false;
             urlElement.required = true;
         } else {
             urlBoxElement.hidden = true;
             fileBoxElement.hidden = false;
 
             urlElement.required = false;
-            soundfileElement.required = true;
+            audiofileElement.required = true;
         }
     })
     console.log("{{ vocal_range }}");

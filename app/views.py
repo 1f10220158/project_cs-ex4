@@ -80,7 +80,7 @@ def analysis(request):
                 vocal_options += ["--two-stems", "vocals"]
 
             #音声分離
-            #demucs.separate.main(vocal_options)
+            demucs.separate.main(vocal_options)
 
             #ボーカルの音域推定
             vocal_audio_path = separated_path.format(audio_name_without_extension, "vocals.mp3")
@@ -91,7 +91,7 @@ def analysis(request):
         else:
 
             #音声分離
-            #demucs.separate.main(vocal_options)
+            demucs.separate.main(vocal_options)
             pass
 
         if url:
@@ -133,6 +133,7 @@ def analysis(request):
         vocal_range = models.CharField(max_length=10)
         bpm = models.CharField(max_length=20)
         """
+
         context = {"data": 1}
 
     return render(request, "analysis.html", context)
