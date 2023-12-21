@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from app.models import *
 
@@ -134,9 +134,7 @@ def analysis(request):
         bpm = models.CharField(max_length=20)
         """
 
-        context = {"data": 1}
-
-    return render(request, "analysis.html", context)
+    return redirect(request, "private.html")
 
 def signUp(request):
     return render(request, "signUp.html")

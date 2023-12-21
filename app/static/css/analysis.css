@@ -8,7 +8,7 @@
     border-radius: 5px;
 }
 
-#main-box {
+.main-box {
     padding: 50px;
 }
 
@@ -44,10 +44,17 @@ p.mid-header {
     border-radius: 20px;
 }
 
-#soundfile {
+#audio-file {
     margin: 30px 0 30px 35px;;
 }
 
 #execution-box {
     text-align: center;
+}
+
+#main-box-load p {
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
 }

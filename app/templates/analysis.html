@@ -3,8 +3,8 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/analysis.css' %}">
 <div id="main">
-    <div id="main-box">
-        <form action="{% url 'analysis' %}" method="post" enctype="multipart/form-data">
+    <div class="main-box" id="main-box-norm">
+        <form action="{% url 'analysis' %}" method="post" enctype="multipart/form-data" id="form">
             {% csrf_token %}
             
                 <h2 class="mid-header">YouTube URLかファイル (mp3, wav) を選択</h2>
@@ -48,6 +48,9 @@
             </div>
         </form>
     </div>
+    <div class="main-box" id="main-box-load" hidden>
+        <p>now loadings.</p>
+    </div>
 </div>
 {% endblock %}
 
@@ -74,6 +77,13 @@
             audiofileElement.required = true;
         }
     })
-    console.log("{{ vocal_range }}");
+    
+    const mainBoxElement = document.getElementById("main-box-norm");
+    const loadElement = document.getElementById("main-box-load");
+    const formElement = document.getElementById("form");
+    formElement.addEventListener("submit", () => {
+        mainBoxElement.hidden = true;
+        loadElement.hidden = false;
+    })
 </script>
 {% endblock %}
