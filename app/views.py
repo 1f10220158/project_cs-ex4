@@ -134,7 +134,7 @@ def analysis(request):
         bpm = models.CharField(max_length=20)
         """
 
-    return redirect(request, "private.html")
+    return redirect("private")
 
 def signUp(request):
     return render(request, "signUp.html")

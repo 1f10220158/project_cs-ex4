@@ -15,14 +15,14 @@
             </div>
 
             <div id="file-box">
-                <p class="mid-header">ファイルを選択 (上で選択したフィールドに代わります)</p>
+                <h2 class="mid-header">ファイルを選択 (上で選択したフィールドに代わります)</h2>
                 <input type="file" name="audio-file" id="audio-file" required>
             </div>
 
             <div id="url-box" hidden>
                 <h2 class="mid-header">YouTube URLを入力 (上で選択したフィールドに代わります)</h2>
                 <div id="input-url-box">
-                <input type="text" name="url" id="url" placeholder="URLを入力">
+                <input type="text" name="url" id="url" placeholder="URLを入力" disabled>
                 <div class="background-input-box"></div>
             </div>
             </div>
@@ -34,7 +34,6 @@
                 <input type="range" name="vocal" id="vocal" min="0" max="1" step="1">
                 <label for="vocal">ボーカルあり</label>
             </div>
-
             
                 <h2 class="mid-header">楽器別 (バス、ドラム、その他) に分けるか選択</h2>
                 <div class="range-box">
@@ -44,12 +43,20 @@
                 </div>
 
             <div id="execution-box">
-                <button type="submit">解析する</button>
+                <button type="submit">解析</button>
             </div>
         </form>
     </div>
     <div class="main-box" id="main-box-load" hidden>
-        <p>now loadings.</p>
+        <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+          </div>
+        <p>Now Loading ...</p>
     </div>
 </div>
 {% endblock %}
@@ -69,12 +76,18 @@
 
             audiofileElement.required = false;
             urlElement.required = true;
+
+            audiofileElement.disabled = true;
+            urlElement.disabled = false;
         } else {
             urlBoxElement.hidden = true;
             fileBoxElement.hidden = false;
 
             urlElement.required = false;
             audiofileElement.required = true;
+
+            audiofileElement.disabled = false;
+            urlElement.disabled = true;
         }
     })
     
