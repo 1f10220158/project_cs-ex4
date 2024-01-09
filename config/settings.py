@@ -133,3 +133,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 os.environ['TF_CPP_MIN_LOG_LEVEL']='1'
+os.environ["TFHUB_CACHE_DIR"] = "/tmp/model"
