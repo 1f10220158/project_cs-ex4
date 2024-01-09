@@ -1,28 +1,65 @@
 @charset "utf-8";
 
 body {
-	height: 100%; /*高さを100%にして描画エリアをとる*/
     margin: 0;
+    font-family: "游ゴシック", "ヒラギノ角ゴ ProN", sans-serif;
 }
 
 nav ul{
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
     list-style: none;
     background-color: white;
-    width: 100%;
-    justify-content: center;
     padding: 0;
     margin: 0;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.173);
 }
 
 nav ul li {
-    padding: 0px 40px;
+    text-align: center;
+    margin-top: 30px;
+    padding: 0 6px 4px 6px;
+}
+
+li.link {
+    margin-right: 40px;
+    margin-left: 0;
+}
+
+li#home-link {
+    margin-right: auto;
+    margin-left: 40px;
 }
 
 ul li a {
     text-decoration: none;
     color: black;
-    font-size: 18px;
-    font-weight: bold;
-    width: 40px;
+}
+
+li.link a {
+    font-size: 23px;
+    font-weight: 700;
+}
+
+li#home-link a {
+    font-size: 27px;
+    font-weight: 900;
+}
+
+div#wrapper {
+    margin-top: 78px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    min-height: calc(100vh - 208px);
+    background-image:  radial-gradient(#0000003e 2px, transparent 2px), radial-gradient(#0000003e 2px, #ffffff 2px);
+    background-size: 40px 40px;
+    background-position:0 0, 20px 20px;
+}
+
+#end-block {
+    height: 60px;
+    width: 100%;
+    background-color: rgb(89, 89, 89);
 }
