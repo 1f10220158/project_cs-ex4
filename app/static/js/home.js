@@ -1,8 +1,12 @@
-function showPage(page) {
-    alert(`移動先: ${page}`);
-  }
-  
-  function showDetails(title) {
-    document.getElementById('detailsContent').innerText = `${title} の詳細がここに表示されます。`;
-  }
-  
+const main = document.getElementById('main');
+const sidebar = document.getElementById('sidebar');
+
+function openSidebar() {
+main.classList.add('open');
+sidebar.style.right = '0px';
+}
+
+function closeSidebar() {
+main.classList.remove('open');
+sidebar.style.right = '-250px';
+}

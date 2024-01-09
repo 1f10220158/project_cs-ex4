@@ -1,11 +1,32 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 
-{% for analysis in analysis_data %}
-    <p>User: {{ analysis.user_name }}</p>
-    <p>Music Title: {{ analysis.music_title }}</p>
-{% endfor %}
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+  <div id="main">
+    {% for analysis in analyses %}
+      <p>{{ analysis.id }} - {{ analysis.user_name }}</p>
+    {% endfor %}
+  </div>
+
+  <div id="sidebar">
+    {% for analysis in analyses %}
+      <p>{{ analysis.datetime }}</p>
+      <p>{{ analysis.vocal_path }}</p>
+      <p>{{ analysis.no_vocal_path }}</p>
+      <p>{{ analysis.bass_path }}</p>
+      <p>{{ analysis.drum_path }}</p>
+      <p>{{ analysis.other_path }}</p>
+      <p>{{ analysis.youtube_url }}</p>
+      <p>{{ analysis.audio_path }}</p>
+      <p>{{ analysis.audio_key }}</p>
+      <p>{{ analysis.audio_title }}</p>
+      <p>{{ analysis.vocal_range }}</p>
+      <p>{{ analysis.bpm }}</p>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block script %}
 
 {% endblock %}
