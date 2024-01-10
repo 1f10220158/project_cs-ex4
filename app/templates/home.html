@@ -2,62 +2,35 @@
 {% load static %}
 
 {% block content %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
-    <div id="main">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+  
+  <div id="main">
 
-      <div class="main-box">
-        {% for analysis in analyses %}
-            <div id="main-bar" onclick="toggleSidebar()">
-              <p>{{ analysis.audio_title }}</p>
-              <p>{{ analysis.user_name }}</p>
-            </div>
-        {% endfor %}
-    
-      <div id="sidebar">
-        {% for analysis in analyses %}
-            <p>{{ analysis.datetime }}</p>
-            <p>{{ analysis.vocal_path }}</p>
-            <p>{{ analysis.no_vocal_path }}</p>
-            <p>{{ analysis.bass_path }}</p>
-            <p>{{ analysis.drum_path }}</p>
-            <p>{{ analysis.other_path }}</p>
-            <p>{{ analysis.youtube_url }}</p>
-            <p>{{ analysis.audio_path }}</p>
-            <p>{{ analysis.audio_key }}</p>
-            <p>{{ analysis.vocal_range }}</p>
-            <p>{{ analysis.bpm }}</p>
-        {% endfor %}
-      </div>
-    </div>
-    
+    <div class="main-box">
+      {% for analysis in analyses %}
+      <p onclick="toggleSidebar('{{ analysis.id }}')">{{ analysis.audio_title }}</p>
+      {% endfor %}
     </div>
 
-    
+    <div id="sidebar">
+      {% for analysis in analyses %}
+        <div class="sidebar-content" id="sidebar-{{ analysis.id }}">
+          <p>{{ analysis.datetime }}</p>
+          <p>{{ analysis.vocal_path }}</p>
+          <p>{{ analysis.no_vocal_path }}</p>
+          <p>{{ analysis.bass_path }}</p>
+          <p>{{ analysis.drum_path }}</p>
+          <p>{{ analysis.other_path }}</p>
+          <p>{{ analysis.youtube_url }}</p>
+          <p>{{ analysis.audio_path }}</p>
+          <p>{{ analysis.audio_key }}</p>
+          <p>{{ analysis.vocal_range }}</p>
+          <p>{{ analysis.bpm }}</p>
+        </div>
+      {% endfor %}
+    </div>
 
-    <script>
-        const main_bar = document.getElementById('main-bar');
-        const sidebar = document.getElementById('sidebar');
+  </div>
 
-        function toggleSidebar() {
-            if (main_bar.classList.contains('open')) {
-                closeSidebar();
-            } else {
-                openSidebar();
-            }
-        }
-
-        function openSidebar() {
-            main_bar.classList.add('open');
-            sidebar.style.right = '0';
-        }
-
-        function closeSidebar() {
-            main_bar.classList.remove('open');
-            sidebar.style.right = '-250px';
-        }
-    </script>
-{% endblock %}
-
-{% block script %}
-
+  <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}
