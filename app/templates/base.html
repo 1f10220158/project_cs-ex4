@@ -12,7 +12,7 @@
     <nav>
         <ul>
             <li id="home-link"><a href="{% url 'home' %}">Music Analyzer</a></li>
-            <li class="link" id="user-link"><a href="{% url 'private' %}">user page</a></li>
+            <li class="link" id="user-link"><a href="{% url 'private' %}" id="user-link-a"></a></li>
             <li class="link" id="analysis-link"><a href="{% url 'analysis' %}">analysis</a></li>
         </ul>
     </nav>
@@ -32,6 +32,14 @@
         } else if (accessingPath === "/private/") {
             const userLinkElement = document.getElementById("user-link");
             userLinkElement.style.borderBottom = styleBorderBottom;
+        }
+
+        const userLinkAElement = document.getElementById("user-link-a");
+
+        if ("{{ user.username }}") {
+            userLinkAElement.textContent = "{{ user.username }}";
+        } else {
+            userLinkAElement.textContent = "ログイン";
         }
     </script>
     {% block script %}

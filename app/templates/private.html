@@ -5,8 +5,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 <div id="main">
     <div id="main-box">
-        <h2>個人の解析履歴</h2>
-        <p>ここでは個人が解析したデータが表示されます。</p>
+        <h2>{{ user.username }} の解析履歴</h2>
+        <p>ここでは個々人が解析したデータが表示されます。</p>
         <div id="container">
         <div id="main-bar">
             {% if analysis %}
