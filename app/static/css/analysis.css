@@ -43,6 +43,21 @@ h2.mid-header {
     border: solid 3px #dff1ff;
 }
 
+#page-explain {
+    font-size: 18px;
+    padding: 30px;
+    font-weight: 500;
+}
+
+#page-explain p {
+    margin: 0;
+}
+
+#page-explain ol li {
+    padding-top: 7px; 
+    padding-bottom: 7px;
+}
+
 ::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: #53aeff;

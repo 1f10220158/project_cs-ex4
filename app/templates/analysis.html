@@ -6,12 +6,21 @@
     <div class="main-box" id="main-box-norm">
         <form action="{% url 'analysis' %}" method="post" enctype="multipart/form-data" id="form">
             {% csrf_token %}
-            
-                <h2 class="mid-header">YouTube URLかファイル (mp3, wav) を選択</h2>
-                <div class="range-box">
+
+            <h2 class="mid-header">解析の仕方</h2>
+            <div id="page-explain">
+                <p>解析したい曲に合わせて上からフォームを入力していくだけ！</p>
+                <ol>
+                    <li>曲はyoutubeのURLか直接ファイルを選択してアップロードする。</li>
+                    <li>曲にボーカルがあるか選択する。ある場合、解析後にボーカル音源がメロディ音源と分離されていることが解析結果から確認できる。</li>
+                    <li>楽器別に分けるか選択する。分ける場合、ボーカルとメロディを分けるのと同じように楽器別に音源を分離することが出来る。</li>
+                </ol>
+            </div>
+            <h2 class="mid-header">YouTube URLかファイル (mp3, wav) を選択</h2>
+            <div class="range-box">
                 <label for="url-or-file">YouTube URL</label>
                 <input type="range" name="url-or-file" id="url-or-file" min="0" max="1" step="1">
-                <label for="url-or-file">ファイル  (mp3, wav)</label>
+                <label for="url-or-file">ファイル (mp3, wav)</label>
             </div>
 
             <div id="file-box">
@@ -22,25 +31,25 @@
             <div id="url-box" hidden>
                 <h2 class="mid-header">YouTube URLを入力 (上で選択したフィールドに代わります)</h2>
                 <div id="input-url-box">
-                <input type="text" name="url" id="url" placeholder="URLを入力" disabled>
-                <div class="background-input-box"></div>
-            </div>
+                    <input type="text" name="url" id="url" placeholder="URLを入力" disabled>
+                    <div class="background-input-box"></div>
+                </div>
             </div>
 
-           
+
             <h2 class="mid-header">ボーカルあり・なしを選択</h2>
-                <div class="range-box">
+            <div class="range-box">
                 <label for="vocal">ボーカルなし</label>
                 <input type="range" name="vocal" id="vocal" min="0" max="1" step="1">
                 <label for="vocal">ボーカルあり</label>
             </div>
-            
-                <h2 class="mid-header">楽器別 (バス、ドラム、その他) に分けるか選択</h2>
-                <div class="range-box">
+
+            <h2 class="mid-header">楽器別 (バス、ドラム、その他) に分けるか選択</h2>
+            <div class="range-box">
                 <label for="separate">分けない</label>
                 <input type="range" name="inst-separate" id="inst-separate" min="0" max="1" step="1">
                 <label for="inst-separate">分ける</label>
-                </div>
+            </div>
 
             <div id="execution-box">
                 <button type="submit">解析</button>
@@ -55,7 +64,7 @@
             <div class="sk-chase-dot"></div>
             <div class="sk-chase-dot"></div>
             <div class="sk-chase-dot"></div>
-          </div>
+        </div>
         <p>Now Loading ...</p>
     </div>
 </div>
