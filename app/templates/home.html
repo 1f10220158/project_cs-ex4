@@ -5,14 +5,14 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
     <div id="main">
 
-      <div id="main-box">
+      <div class="main-box">
         {% for analysis in analyses %}
             <div id="main-bar" onclick="toggleSidebar()">
               <p>{{ analysis.audio_title }}</p>
               <p>{{ analysis.user_name }}</p>
             </div>
         {% endfor %}
-      </div>
+
     
       <div id="sidebar">
         {% for analysis in analyses %}
@@ -29,6 +29,7 @@
             <p>{{ analysis.bpm }}</p>
         {% endfor %}
       </div>
+    </div>
     
     </div>
 
