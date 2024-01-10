@@ -9,7 +9,7 @@
 }
 
 #main-box {
-  padding: 50px;
+  padding: 50px 50px 0 50px;
 }
 
 #main-box h2 {
@@ -72,13 +72,8 @@ p {
 }
 
 .logout-container {
-  background-color: white;
-  width: 95%;
   margin: 0 auto;
-  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.173);
-  border-radius: 5px;
-  margin-top: 20px;
-  padding: 20px;
+  padding-bottom: 20px;
   text-align: center;
 }
 
@@ -102,6 +97,7 @@ button.logout-button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 15px;
+  font-weight: bold;
 }
 
 button.logout-button:hover {
