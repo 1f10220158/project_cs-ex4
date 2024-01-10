@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/signUp.css' %}">
+<div class="main-container">
+    <div class="main-box">
+        <h2 class="mid-header">サインアップ/SignUp</h2>
+        <form method="post" action="{% url 'signUp' %}" class="signUp-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">サインアップ/SignUp</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

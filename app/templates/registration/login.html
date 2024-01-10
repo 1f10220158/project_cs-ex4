@@ -1,5 +1,21 @@
-{% extend 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <div class="login-container">
+        <div class="login-box">
+            <h2 class="login-title">ログイン/Login</h2>
+            {% if form.errors %}
+                <p class="login-message">ユーザー名とパスワードが一致しませんでした。もう一度試してください/Your username and password didn't match. Please try again.</p>
+            {% endif %}
+            <form method="post" class="login-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Login" class="login-submit" />
+            </form>
+            <p>アカウントを持っていないですか?/Don't have an account? <a href="{% url 'signUp' %}" class="login-signup-link">Sign Up</a></p>
+            <p><a href="{% url 'home' %}" class="login-home-link">home</a></p>
+        </div>
+    </div>
 {% endblock %}
