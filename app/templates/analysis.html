@@ -60,15 +60,7 @@
     </div>
 </div>
 
-{% if user.is_authenticated %}
-  <p>{{ user.username }} でログインしています/You are logged in as {{ user.username }}</p>
-  <form method="post" action="{% url 'logout' %}">
-    {% csrf_token %}
-    <button type="submit">ログアウト/Login</button>
-  </form>
-  {% else %}
-        <p>ログインしていません。/You are not logged in. Please <a href="{% url 'login' %}">ログイン/Login</a>.</p>
-{% endif %}
+{% endblock %}
 
 {% block script %}
 <script>
