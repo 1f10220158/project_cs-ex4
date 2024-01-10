@@ -13,7 +13,9 @@ from .models import Analysis
 
 #@login_required
 def private(request):
-    return render(request, "private.html")
+    analysis = Analysis.objects.all()
+    context = {"analysis": analysis }
+    return render(request, 'private.html', context)
 
 #@login_required
 def analysis(request):
@@ -25,6 +27,7 @@ def analysis(request):
         url = request.POST.get("url")
         vocal = request.POST.get("vocal")
         separate = request.POST.get("inst-separate")
+        username = request.POST.get("user-name")
 
         #ファイルを入力した場合
         if audio_file:
@@ -115,6 +118,7 @@ def analysis(request):
         analysis.audio_key = key
         analysis.audio_title = title
         analysis.bpm = tempo
+        analysis.user_name = username
         analysis.save()
 
         """
@@ -142,5 +146,6 @@ def signUp(request):
     return render(request, "signUp.html")
 
 def home(request):
-    analyses = Analysis.objects.all()
-    return render(request, 'home.html', {'analyses': analyses})
+    analysis = Analysis.objects.all()
+    context = {"analysis": analysis }
+    return render(request, 'home.html', context)

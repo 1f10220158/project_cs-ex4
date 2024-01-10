@@ -1,28 +1,63 @@
 @charset "utf-8";
 
 #main {
-    background-color: white;
-    width: 95%;
-    margin: 0 auto;
-    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.173);
-    border-radius: 5px;
-    padding: 50px; 
-  }
-
-.main-box {
-    padding: 50px;
+  background-color: white;
+  width: 95%;
+  margin: 0 auto;
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.173);
+  border-radius: 5px;
 }
-  
-  h2.mid-header {
-    font-size: 23px;
-    font-weight: 600;  
-    color: rgb(48, 48, 48);
-    padding: 0 0 5px 20px;
-    border-bottom: solid 4px rgba(255, 170, 0, 0.372);
-    margin: 0;
-  }
-  
-  p {
-    font-size: 16px;
-    margin: 20px 0;
-  }
+
+#main-box {
+  padding: 50px;
+}
+
+#main-box h2 {
+  font-size: 23px;
+  font-weight: 600;
+  color: rgb(48, 48, 48);
+  padding: 0 0 5px 20px;
+  border-bottom: solid 4px rgba(255, 170, 0, 0.372);
+  margin: 0;
+}
+
+#container {
+  display: flex;
+}
+
+#main-bar {
+  padding-right: 30px;
+  width: 50%;
+}
+
+#sidebar {
+  min-width: 320px;
+  border-right: 5px solid hsla(209, 98%, 67%, 0.555);
+  border-left: 5px solid hsla(209, 98%, 67%, 0.555);
+  background-color:hsla(209, 100%, 85%, 0.189);
+  padding: 1px 13px 20px 13px;
+}
+
+#detail {
+  text-align: center;
+}
+
+.article {
+  border-left: 5px solid hsla(209, 100%, 63%, 0.733);
+  background-color:hsla(209, 100%, 85%, 0.189);
+  border-radius: 2px;
+  padding: 1px 13px 1px 13px;
+  margin-bottom: 20px;
+}
+
+.article:hover{
+  cursor: pointer;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li::marker {
+  font-size: 10px;
+}
