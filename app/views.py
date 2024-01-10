@@ -115,7 +115,7 @@ def analysis(request):
             analysis.no_vocal_path = separated_path.format(audio_name_without_extension, "no_vocals.mp3")
         else:
             analysis.bass_path = separated_path.format(audio_name_without_extension, "bass.mp3")
-            analysis.drum_path = separated_path.format(audio_name_without_extension, "drum.mp3")
+            analysis.drum_path = separated_path.format(audio_name_without_extension, "drums.mp3")
             analysis.other_path = separated_path.format(audio_name_without_extension, "other.mp3")
 
         analysis.audio_key = key

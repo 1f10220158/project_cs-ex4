@@ -56,26 +56,26 @@
                 </li>
                 <li>BPM: {{audio.bpm}}</li>
                 <li>音源</li>
-                <audio controls src="{{audio.audio_path}}"></audio>
+                <audio controls src="/{{audio.audio_path}}"></audio>
                 {% if audio.vocal_path %}
                     <li>ボーカル音源: </li>
-                    <audio controls src="{{audio.vocal_path}}"></audio>
+                    <audio controls src="/{{audio.vocal_path}}"></audio>
                 {% endif %}
                 {% if audio.no_vocal_path %}
                     <li>メロディ音源: </li>
-                    <audio controls src="{{audio.no_vocal_path}}"></audio>
+                    <audio controls src="/{{audio.no_vocal_path}}"></audio>
                 {% endif %}
                 {% if audio.bass_path %}
                     <li>バス音源: </li>
-                    <audio controls src="{{audio.bass_path}}"></audio>
+                    <audio controls src="/{{audio.bass_path}}"></audio>
                 {% endif %}
                 {% if audio.drum_path %}
                     <li>ドラム音源: </li>
-                    <audio controls src="{{audio.drum_path}}"></audio>
+                    <audio controls src="/{{audio.drum_path}}"></audio>
                 {% endif %}
                 {% if audio.other_path %}
                     <li>その他の音源: </li>
-                    <audio controls src="{{audio.other_path}}"></audio>
+                    <audio controls src="/{{audio.other_path}}"></audio>
                 {% endif %}
             </ul>
             </div>
