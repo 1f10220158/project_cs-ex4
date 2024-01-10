@@ -85,13 +85,13 @@
     </div>
 </div>
 {% if user.is_authenticated %}
-  <p>{{ user.username }} でログインしています/You are logged in as {{ user.username }}</p>
-  <form method="post" action="{% url 'logout' %}">
+  <div class="logout-container">
+    <p class="logged-in-message">{{ user.username }} でログインしています/You are logged in as {{ user.username }}</p>
+  <form class="logout-form" method="post" action="{% url 'logout' %}">
     {% csrf_token %}
-    <button type="submit">ログアウト/Login</button>
+    <button class="logout-button" type="submit">ログアウト/Logout</button>
   </form>
-  {% else %}
-        <p>ログインしてください。/You are not logged in. Please <a href="{% url 'login' %}">ログイン/Login</a>.</p>
+  </div>
 {% endif %}
 {% endblock %}
 

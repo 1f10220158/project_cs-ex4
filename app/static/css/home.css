@@ -70,3 +70,40 @@ audio {
 p {
   font-size: 17px;
 }
+
+.logout-container {
+  background-color: white;
+  width: 95%;
+  margin: 0 auto;
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.173);
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+p.logged-in-message {
+  padding: 10px;
+  border-radius: 5px;
+  color: #333; /* テキストの色 */
+  font-weight: bold; /* フォントの太さ */
+  margin-bottom: 20px;
+}
+
+form.logout-form {
+    margin-top: 10px;
+}
+
+button.logout-button {
+  background-color: #ffa500;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button.logout-button:hover {
+    background-color: #ff8c00;
+}
