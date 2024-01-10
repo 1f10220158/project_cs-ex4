@@ -13,11 +13,11 @@ from yt_dlp import YoutubeDL
 import demucs.separate
 import re
 
-#@login_required
+@login_required
 def private(request):
     return render(request, "private.html")
 
-#@login_required
+@login_required
 def analysis(request):
     if request.method == "GET":
         return render(request, "analysis.html")
