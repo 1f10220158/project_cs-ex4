@@ -80,8 +80,8 @@ p {
 p.logged-in-message {
   padding: 10px;
   border-radius: 5px;
-  color: #333; /* テキストの色 */
-  font-weight: bold; /* フォントの太さ */
+  color: #333;
+  font-weight: bold;
   margin-bottom: 20px;
 }
 

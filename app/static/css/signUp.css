@@ -58,3 +58,8 @@ button:hover {
     content: "\A" ;
     white-space: pre;
 }
+
+.login-link {
+    color: #007bff;
+    text-decoration: none;
+}
