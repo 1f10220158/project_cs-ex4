@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 #main {
     background-color: white;
     width: 95%;
@@ -6,6 +8,10 @@
     border-radius: 5px;
     padding: 50px; 
   }
+
+.main-box {
+    padding: 50px;
+}
   
   h2.mid-header {
     font-size: 23px;
