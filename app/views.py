@@ -12,10 +12,13 @@ import librosa
 from yt_dlp import YoutubeDL
 import demucs.separate
 import re
+from .models import Analysis
 
 @login_required
 def private(request):
-    return render(request, "private.html")
+    analysis = Analysis.objects.all()
+    context = {"analysis": analysis }
+    return render(request, 'private.html', context)
 
 @login_required
 def analysis(request):
@@ -27,6 +30,7 @@ def analysis(request):
         url = request.POST.get("url")
         vocal = request.POST.get("vocal")
         separate = request.POST.get("inst-separate")
+        username = request.POST.get("user-name")
 
         #ファイルを入力した場合
         if audio_file:
@@ -117,6 +121,7 @@ def analysis(request):
         analysis.audio_key = key
         analysis.audio_title = title
         analysis.bpm = tempo
+        analysis.user_name = username
         analysis.save()
 
         """
@@ -141,7 +146,9 @@ def analysis(request):
     return redirect("private")
 
 def home(request):
-    return render(request, "home.html")
+    analysis = Analysis.objects.all()
+    context = {"analysis": analysis }
+    return render(request, 'home.html', context)
 
 def login_view(request):
     if request.method == 'POST':
@@ -178,3 +185,4 @@ def signup(request):
         form = UserCreationForm()
 
     return render(request, 'signup.html', {'form': form})
+

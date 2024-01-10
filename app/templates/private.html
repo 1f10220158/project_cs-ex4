@@ -1,5 +1,113 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/private.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<div id="main">
+    <div id="main-box">
+        <h2>個人の解析履歴</h2>
+        <p>ここでは個人が解析したデータが表示されます。</p>
+        <div id="container">
+        <div id="main-bar">
+            {% if analysis %}
+            {% for audio in analysis %}
+            {% if audio.user_name %}
+            {% if audio.user_name == user.username %}
+            <div onclick="toggleSidebar('{{ audio.id }}')" class="article">
+                <ul>
+                <li>タイトル: {{ audio.audio_title }}</li>
+                <li>解析した人:
+                    {% if audio.user_name %}
+                        {{ audio.user_name }}
+                    {% else %}
+                        None
+                    {% endif %}
+                </li>
+                <li>解析した時間: {{ audio.datetime }}</li>
+            </ul>
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            <div class="article">
+                <ul>
+                    <li>データがありません。</li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+
+        <div id="sidebar">
+            <p id="detail">左のアイテムを選択すると詳細が表示されます。</p>
+            {% for audio in analysis %}
+            <div id="{{ audio.id }}" hidden>
+                <ul>
+                {% if audio.youtube_url %}
+                    <li>youtube URL: {{ audio.youtube_url }}</li>
+                {% endif %}
+                <li>キー: {{audio.audio_key}}</li>
+                <li>ボーカルの音域:
+                    {% if audio.vocal_range %}
+                        {{ audio.vocal_range }}
+                    {% else %}
+                        None
+                    {% endif %}
+                </li>
+                <li>BPM: {{audio.bpm}}</li>
+                <li>音源</li>
+                <audio controls src="{{audio.audio_path}}"></audio>
+                {% if audio.vocal_path %}
+                    <li>ボーカル音源: </li>
+                    <audio controls src="{{audio.vocal_path}}"></audio>
+                {% endif %}
+                {% if audio.no_vocal_path %}
+                    <li>メロディ音源: </li>
+                    <audio controls src="{{audio.no_vocal_path}}"></audio>
+                {% endif %}
+                {% if audio.bass_path %}
+                    <li>バス音源: </li>
+                    <audio controls src="{{audio.bass_path}}"></audio>
+                {% endif %}
+                {% if audio.drum_path %}
+                    <li>ドラム音源: </li>
+                    <audio controls src="{{audio.drum_path}}"></audio>
+                {% endif %}
+                {% if audio.other_path %}
+                    <li>その他の音源: </li>
+                    <audio controls src="{{audio.other_path}}"></audio>
+                {% endif %}
+            </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    const main_bar = document.getElementById('main-bar');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarInElements = sidebar.children;
+
+    if (!main_bar.childElementCount) {
+        main_bar.innerHTML = `
+        <div class="article">
+            <ul>
+                <li>データがありません。</li>
+            </ul>
+        </div>`;
+    }
+
+    function toggleSidebar(id) {
+        for (const child of sidebarInElements) {
+            child.hidden = true;
+        }
+        const selectedElement = document.getElementById(id);
+        selectedElement.hidden = false;
+    }
+
+</script>
 {% endblock %}
