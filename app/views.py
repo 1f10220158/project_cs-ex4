@@ -9,6 +9,8 @@ from yt_dlp import YoutubeDL
 import demucs.separate
 import re
 
+from .models import Analysis
+
 #@login_required
 def private(request):
     return render(request, "private.html")
@@ -140,4 +142,5 @@ def signUp(request):
     return render(request, "signUp.html")
 
 def home(request):
-    return render(request, "home.html")
+    analyses = Analysis.objects.all()
+    return render(request, 'home.html', {'analyses': analyses})
